@@ -1,0 +1,169 @@
+@import 'tailwindcss';
+
+@layer base {
+	:root {
+		--font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+		--font-display: 'Space Grotesk', sans-serif;
+		--font-mono: 'JetBrains Mono', monospace;
+	}
+
+	html {
+		font-family: var(--font-sans);
+		background-color: #09090b;
+		color: #f4f4f5;
+		scroll-behavior: smooth;
+	}
+}
+
+.font-display {
+	font-family: var(--font-display);
+}
+
+.font-mono-code {
+	font-family: var(--font-mono);
+}
+
+/* Giant Outlined Stroke Text like Dymas Alfin Reference (00:01-00:03) */
+.text-outline-hero {
+	color: transparent;
+	-webkit-text-stroke: 2px rgba(244, 244, 245, 0.78);
+	transition:
+		-webkit-text-stroke 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+		filter 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.text-outline-hero:hover,
+.text-outline-hero.is-energized {
+	-webkit-text-stroke: 2px #34d399;
+	filter: drop-shadow(0 0 28px rgba(16, 185, 129, 0.32));
+}
+
+/* Subtle metallic-emerald animated sheen on solid hero typography & role title */
+.text-shimmer-hero {
+	background-image: linear-gradient(
+		110deg,
+		#f4f4f5 0%,
+		#f4f4f5 38%,
+		#6ee7b7 50%,
+		#f4f4f5 62%,
+		#f4f4f5 100%
+	);
+	background-size: 240% 100%;
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	@keyframes hero-fade-up {
+		from {
+			opacity: 0;
+			transform: translateY(22px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes hero-shimmer-sweep {
+		0%,
+		15% {
+			background-position: 100% 50%;
+		}
+		55%,
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+
+	@keyframes hero-ambient-breathe {
+		0%,
+		100% {
+			opacity: 0.75;
+			transform: scale(1) translate3d(0, 0, 0);
+		}
+		50% {
+			opacity: 1;
+			transform: scale(1.08) translate3d(0, -8px, 0);
+		}
+	}
+
+	@keyframes hero-badge-float {
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-5px);
+		}
+	}
+
+	.animate-hero-enter {
+		animation: hero-fade-up 0.85s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+		animation-delay: var(--delay, 0ms);
+	}
+
+	.text-shimmer-hero {
+		animation: hero-shimmer-sweep 7.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+	}
+
+	.animate-ambient-breathe {
+		animation: hero-ambient-breathe 9s ease-in-out infinite;
+	}
+
+	.animate-badge-float {
+		animation: hero-badge-float 4.2s ease-in-out infinite;
+	}
+}
+
+/* Giant Section Watermark Background Text (PORTFOLIO, SERVICE, EXPERIENCE) */
+.watermark-title {
+	font-family: var(--font-display);
+	font-weight: 800;
+	letter-spacing: -0.04em;
+	line-height: 0.85;
+	color: rgba(255, 255, 255, 0.032);
+	user-select: none;
+	pointer-events: none;
+}
+
+/* Seamless studio portrait edge feathering so square photos blend like cutouts */
+.portrait-cutout-mask {
+	-webkit-mask-image: radial-gradient(ellipse 64% 76% at 50% 56%, #000 50%, transparent 94%),
+		linear-gradient(to top, #000 82%, transparent 100%);
+	-webkit-mask-composite: source-in;
+	mask-image: radial-gradient(ellipse 64% 76% at 50% 56%, #000 50%, transparent 94%),
+		linear-gradient(to top, #000 82%, transparent 100%);
+	mask-composite: intersect;
+}
+
+/* Sticky Curtain Scroll-Slide Card Surface */
+.scroll-slide-curtain {
+	position: sticky;
+	top: 0;
+	box-shadow: 0 -28px 70px rgba(0, 0, 0, 0.88);
+	will-change: transform;
+}
+
+/* Progressive enhancement for scroll-driven entry reveal per modern-web-guidance */
+@media (prefers-reduced-motion: no-preference) {
+	@supports ((animation-timeline: view()) and (animation-range: entry)) {
+		@keyframes slide-header-enter {
+			from {
+				opacity: 0.25;
+				transform: translateY(28px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.scroll-reveal-header {
+			animation: slide-header-enter auto cubic-bezier(0.16, 1, 0.3, 1) backwards;
+			animation-timeline: view(block);
+			animation-range: entry 5% cover 28%;
+		}
+	}
+}

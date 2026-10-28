@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" fill="none">
+  <rect width="960" height="600" fill="#080b0f" />
+  <circle cx="480" cy="300" r="280" fill="#10b981" fill-opacity="0.11" />
+
+  <!-- REST API & Database Schema Architecture Explorer Mockup -->
+  <rect x="72" y="58" width="816" height="484" rx="18" fill="#0e131a" stroke="#10b981" stroke-opacity="0.35" stroke-width="1.5" />
+  <rect x="72" y="58" width="816" height="42" rx="18" fill="#151c26" />
+  <text x="108" y="84" fill="#34d399" font-family="monospace" font-weight="bold" font-size="12">LARAVEL SANCTUM REST API + REDIS CACHE BENCHMARK</text>
+
+  <!-- Left Code / JSON Response -->
+  <rect x="100" y="124" width="380" height="390" rx="12" fill="#090c10" stroke="#27272a" />
+  <text x="124" y="156" fill="#10b981" font-family="monospace" font-size="12">GET /api/v1/academic/schedules</text>
+  <text x="124" y="186" fill="#71717a" font-family="monospace" font-size="11">HTTP/1.1 200 OK • 18.4ms (Redis Hit)</text>
+  <text x="124" y="222" fill="#e4e4e7" font-family="monospace" font-size="12">{</text>
+  <text x="144" y="248" fill="#34d399" font-family="monospace" font-size="12">"status": "success",</text>
+  <text x="144" y="274" fill="#93c5fd" font-family="monospace" font-size="12">"meta": { "semester": "2026-Ganjil" },</text>
+  <text x="144" y="300" fill="#e4e4e7" font-family="monospace" font-size="12">"conflict_check": "PASSED",</text>
+  <text x="144" y="326" fill="#fcd34d" font-family="monospace" font-size="12">"eloquent_queries": 2,</text>
+  <text x="144" y="352" fill="#34d399" font-family="monospace" font-size="12">"eager_loaded": ["lecturer", "room"]</text>
+  <text x="124" y="378" fill="#e4e4e7" font-family="monospace" font-size="12">}</text>
+
+  <!-- Right ERD Nodes -->
+  <rect x="512" y="124" width="348" height="114" rx="12" fill="#141d26" stroke="#10b981" stroke-opacity="0.5" />
+  <text x="536" y="154" fill="#34d399" font-family="monospace" font-weight="bold" font-size="13">TABLE: course_schedules</text>
+  <text x="536" y="180" fill="#d4d4d8" font-family="monospace" font-size="11">PK id (bigint) • FK course_id • FK room_id</text>
+  <text x="536" y="204" fill="#a1a1aa" font-family="monospace" font-size="11">INDEX idx_room_timeslot (Unique Constraint)</text>
+
+  <path d="M686 238 V276" stroke="#10b981" stroke-width="2" stroke-dasharray="4 4" />
+
+  <rect x="512" y="276" width="348" height="114" rx="12" fill="#141c24" stroke="#27272a" />
+  <text x="536" y="306" fill="#f4f4f5" font-family="monospace" font-weight="bold" font-size="13">TABLE: attendance_logs</text>
+  <text x="536" y="332" fill="#d4d4d8" font-family="monospace" font-size="11">PK uuid • FK schedule_id • FK student_id</text>
+  <text x="536" y="356" fill="#34d399" font-family="monospace" font-size="11">QR Token Verification + Geolocation Validated</text>
+
+  <rect x="512" y="414" width="348" height="100" rx="12" fill="#0f1f18" stroke="#10b981" stroke-opacity="0.4" />
+  <text x="536" y="452" fill="#f4f4f5" font-family="sans-serif" font-weight="bold" font-size="16">Response Time Turun 78%</text>
+  <text x="536" y="480" fill="#a1a1aa" font-family="sans-serif" font-size="12">Eliminasi N+1 Query &amp; Indexing Relasional MySQL</text>
+</svg>
