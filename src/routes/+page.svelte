@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import Navbar from '$lib/components/Navbar.svelte';
 	import HeroSlide from '$lib/components/HeroSlide.svelte';
+	import AboutSlide from '$lib/components/AboutSlide.svelte';
 	import WorkSlide from '$lib/components/WorkSlide.svelte';
 	import CapabilitiesSlide from '$lib/components/CapabilitiesSlide.svelte';
 	import ExperienceSlide from '$lib/components/ExperienceSlide.svelte';
@@ -42,9 +43,10 @@
 	<!-- Sticky Curtain Scroll-Slide Stack (Mengikuti mekanisme video referensi Dymas Alfin) -->
 	<main class="relative">
 		<HeroSlide />
+		<AboutSlide />
+		<ExperienceSlide />
 		<WorkSlide />
 		<CapabilitiesSlide />
-		<ExperienceSlide />
 	</main>
 
 	<ContactSlide />

@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { ArrowUpRight, X } from 'lucide-svelte';
+	import { ArrowUpRight, Code2, X } from 'lucide-svelte';
 	import { portfolioData } from '$lib/data/portfolio';
 
 	const { capabilities } = portfolioData;
 
-	// Default first row expanded just like 00:10 in the Dymas Alfin reference video
+	// Default first row expanded
 	let activeId = $state<string | null>(capabilities[0].id);
 
 	function toggleRow(id: string) {
@@ -14,13 +14,13 @@
 
 <section
 	id="capabilities"
-	class="scroll-slide-curtain z-30 min-h-screen rounded-t-[2.25rem] sm:rounded-t-[3rem] border-t border-emerald-500/30 bg-[#09090b] px-4 py-20 sm:px-8 sm:py-28"
+	class="scroll-slide-curtain z-50 min-h-screen rounded-t-[2.25rem] sm:rounded-t-[3rem] border-t border-emerald-500/30 bg-[#09090b] px-4 pt-16 pb-28 sm:px-8 sm:pt-24 sm:pb-40"
 >
 	<!-- Top Curtain Pull-Bar Indicator -->
 	<div class="mx-auto mb-8 h-1.5 w-16 rounded-full bg-emerald-500/30"></div>
 
 	<div class="mx-auto max-w-[1380px]">
-		<!-- Section Header with Giant Watermark (00:08-00:09 Reference: SERVICE / CAPABILITIES) -->
+		<!-- Section Header with Giant Watermark -->
 		<div class="scroll-reveal-header relative py-4">
 			<span
 				aria-hidden="true"
@@ -38,7 +38,7 @@
 			</div>
 		</div>
 
-		<!-- Full-Width Horizontal Interactive Rows (00:09 - 00:10 Reference) -->
+		<!-- Full-Width Horizontal Interactive Rows -->
 		<div role="list" class="mt-12 divide-y divide-white/10 border-t border-b border-white/10">
 			{#each capabilities as item (item.id)}
 				{@const isOpen = activeId === item.id}
@@ -55,7 +55,7 @@
 						aria-expanded={isOpen}
 						class="flex w-full cursor-pointer items-center justify-between gap-4 text-left"
 					>
-						<div class="flex items-baseline gap-3 sm:gap-5">
+						<div class="flex flex-wrap items-baseline gap-3 sm:gap-5">
 							<span class="font-mono-code text-xs sm:text-sm font-semibold text-emerald-400">
 								/{item.code}
 							</span>
@@ -68,65 +68,49 @@
 							</h3>
 						</div>
 
-						<span
-							class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border transition {isOpen
-								? 'border-emerald-400/50 bg-emerald-500 text-zinc-950'
-								: 'border-white/15 bg-zinc-900 text-zinc-300'}"
-						>
-							{#if isOpen}
-								<X class="h-5 w-5" />
-							{:else}
-								<ArrowUpRight class="h-5 w-5" />
-							{/if}
-						</span>
+						<div class="flex items-center gap-3 shrink-0">
+							<span
+								class="flex h-10 w-10 items-center justify-center rounded-full border transition {isOpen
+									? 'border-emerald-400/50 bg-emerald-500 text-zinc-950'
+									: 'border-white/15 bg-zinc-900 text-zinc-300'}"
+							>
+								{#if isOpen}
+									<X class="h-5 w-5" />
+								{:else}
+									<ArrowUpRight class="h-5 w-5" />
+								{/if}
+							</span>
+						</div>
 					</button>
 
 					{#if isOpen}
-						<!-- Expanded Content + Tilted Floating Preview Card (00:10 Reference) -->
-						<div class="mt-6 grid grid-cols-1 items-center gap-8 lg:grid-cols-12">
-							<div class="lg:col-span-7">
-								<p class="max-w-2xl text-sm sm:text-base leading-relaxed text-zinc-300">
-									{item.description}
-								</p>
+						<!-- Expanded Content + Interactive Tech Stack Logo Badges (Without Preview Image) -->
+						<div class="mt-6 border-t border-white/10 pt-6">
+							<p class="max-w-3xl text-sm sm:text-base leading-relaxed text-zinc-300">
+								{item.description}
+							</p>
 
-								<!-- Skill Pills -->
-								<div class="mt-5 flex flex-wrap gap-2">
-									{#each item.skills as skill}
-										<span
-											class="rounded-full border border-emerald-500/30 bg-zinc-950/80 px-3.5 py-1.5 text-xs sm:text-sm font-medium text-emerald-300"
-										>
-											{skill}
-										</span>
-									{/each}
-								</div>
-							</div>
-
-							<!-- Tilted Floating Visual Card (00:10 Reference) -->
-							<div class="lg:col-span-5 flex justify-start lg:justify-end">
-								<div
-									class="group relative w-full max-w-[340px] -rotate-2 rounded-2xl border border-emerald-400/40 bg-zinc-950 p-2.5 shadow-[0_20px_50px_rgba(0,0,0,0.75)] transition duration-300 hover:rotate-0"
-								>
-									<div class="mb-2 flex items-center justify-between px-1">
-										<span class="font-mono-code text-[11px] font-semibold text-emerald-400">
-											{item.shortTitle}
-										</span>
-										<span
-											class="rounded-full bg-emerald-500/15 px-2.5 py-0.5 text-[10px] font-medium text-emerald-300"
-										>
-											{item.metricBadge}
-										</span>
-									</div>
-									<!-- Initially hidden interaction image -> fetchpriority="low" per modern-web-guidance -->
-									<img
-										src={item.previewImage}
-										alt={item.title}
-										fetchpriority="low"
-										loading="lazy"
-										width="340"
-										height="212"
-										class="h-40 w-full rounded-xl object-cover border border-white/10"
-									/>
-								</div>
+							<!-- Skill Badges with Official Technology Logos -->
+							<div class="mt-6 flex flex-wrap gap-2.5 sm:gap-3">
+								{#each item.skills as skill}
+									<span
+										class="group/skill inline-flex items-center gap-2.5 rounded-2xl border border-white/12 bg-zinc-950/85 px-4 py-2.5 text-xs sm:text-sm font-medium text-zinc-100 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-emerald-400/50 hover:bg-zinc-900 hover:text-emerald-300"
+									>
+										{#if skill.logo}
+											<img
+												src={skill.logo}
+												alt="Logo {skill.name}"
+												loading="lazy"
+												width="20"
+												height="20"
+												class="h-5 w-5 shrink-0 object-contain transition-transform duration-200 group-hover/skill:scale-110"
+											/>
+										{:else}
+											<Code2 class="h-4 w-4 shrink-0 text-emerald-400" />
+										{/if}
+										<span>{skill.name}</span>
+									</span>
+								{/each}
 							</div>
 						</div>
 					{/if}

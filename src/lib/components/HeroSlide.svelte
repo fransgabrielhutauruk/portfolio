@@ -17,7 +17,7 @@
 
 	function scrollToContact(event: MouseEvent) {
 		event.preventDefault();
-		const allSlides = ['hero', 'work', 'capabilities', 'experience'];
+		const allSlides = ['hero', 'about', 'experience', 'work', 'capabilities'];
 		let topOffset = 0;
 
 		for (const id of allSlides) {
@@ -37,7 +37,7 @@
 	aria-label="Perkenalan Utama"
 	onmousemove={handleHeroMouseMove}
 	style="--spot-x: {spotlightX}%; --spot-y: {spotlightY}%;"
-	class="sticky top-0 z-10 flex min-h-screen flex-col justify-between overflow-hidden bg-[#09090b] pt-24 pb-8 sm:pt-28 sm:pb-12"
+	class="sticky top-0 z-10 flex min-h-screen flex-col justify-between overflow-hidden bg-[#09090b] pt-24 pb-24 sm:pt-28 sm:pb-36"
 >
 	<!-- Animated Emerald Studio Ambient Backlight + Interactive Cursor Spotlight -->
 	<div

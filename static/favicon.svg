@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0f1715" />
+      <stop offset="100%" stop-color="#090a0f" />
+    </linearGradient>
+    <linearGradient id="emeraldGrad" x1="12" y1="12" x2="52" y2="52" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#6ee7b7" />
+      <stop offset="50%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <linearGradient id="borderGrad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.65" />
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0.15" />
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.28" />
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Rounded Squircle Dark Obsidian Base -->
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#bgGrad)" stroke="url(#borderGrad)" stroke-width="2.5" />
+
+  <!-- Subtle Inner Emerald Studio Glow -->
+  <circle cx="32" cy="32" r="24" fill="url(#glow)" />
+
+  <!-- Left Code Chevron '<' (Crisp Zinc White) -->
+  <path
+    d="M23 21L13 32L23 43"
+    stroke="#f4f4f5"
+    stroke-width="4.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Right Code Chevron '>' (Crisp Zinc White) -->
+  <path
+    d="M41 21L51 32L41 43"
+    stroke="#f4f4f5"
+    stroke-width="4.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Center Emerald Slash '/' (Signature Section Prefix '/01', '/WORK', etc.) -->
+  <path
+    d="M35.5 17L28.5 47"
+    stroke="url(#emeraldGrad)"
+    stroke-width="4.5"
+    stroke-linecap="round"
+  />
+
+  <!-- Signature Glowing Emerald Dot -->
+  <circle cx="48" cy="16" r="3.5" fill="#34d399" />
+</svg>
