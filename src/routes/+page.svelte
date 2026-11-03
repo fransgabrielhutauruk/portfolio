@@ -21,18 +21,27 @@
 			});
 		};
 
+		let rafId = 0;
+		const scheduleStickyUpdate = () => {
+			cancelAnimationFrame(rafId);
+			rafId = requestAnimationFrame(() => {
+				updateStickyOffsets();
+			});
+		};
+
 		updateStickyOffsets();
 
 		const resizeObserver = new ResizeObserver(() => {
-			updateStickyOffsets();
+			scheduleStickyUpdate();
 		});
 
 		slides.forEach((slide) => resizeObserver.observe(slide));
-		window.addEventListener('resize', updateStickyOffsets, { passive: true });
+		window.addEventListener('resize', scheduleStickyUpdate, { passive: true });
 
 		return () => {
+			cancelAnimationFrame(rafId);
 			resizeObserver.disconnect();
-			window.removeEventListener('resize', updateStickyOffsets);
+			window.removeEventListener('resize', scheduleStickyUpdate);
 		};
 	});
 </script>
