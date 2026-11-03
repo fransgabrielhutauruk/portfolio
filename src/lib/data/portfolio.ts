@@ -215,7 +215,7 @@ export const portfolioData = {
         "Aplikasi web SPA full-stack untuk mengelola operasional investasi copytrade, verifikasi KYC & kredensial broker berjenjang, serta otomasi kalkulasi klaim komisi afiliasi.",
       highlights: [
         "Arsitektur SPA Reaktif & Service Layer menggunakan Laravel 12, Inertia.js v2, dan Vue 3.",
-        "Komisi 4-Tier & Eligibilitas 90 Hari dengan transaksi database dan presisi finansial DEC.IMAL(15,2).",
+        "Komisi 4-Tier & Eligibilitas 90 Hari dengan transaksi database dan presisi finansial DECIMAL(15,2).",
         "Keamanan Kredensial & Dokumen Privat melalui enkripsi AES-256 (encrypted cast) serta authorized file streaming."
       ],
       tags: ["Laravel", "Vue", "Inertia.js", "Tailwind CSS", "MySQL"],
