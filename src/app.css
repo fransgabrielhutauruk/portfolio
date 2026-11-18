@@ -128,13 +128,53 @@
 	pointer-events: none;
 }
 
-/* Seamless studio portrait edge feathering so square photos blend like cutouts */
+/* Smooth multi-stop feathering for bottom & outer sleeve edges of cutout portrait */
 .portrait-cutout-mask {
-	-webkit-mask-image: radial-gradient(ellipse 64% 76% at 50% 56%, #000 50%, transparent 94%),
-		linear-gradient(to top, #000 82%, transparent 100%);
+	-webkit-mask-image:
+		linear-gradient(
+			to bottom,
+			#000 0%,
+			#000 55%,
+			rgba(0, 0, 0, 0.88) 66%,
+			rgba(0, 0, 0, 0.55) 77%,
+			rgba(0, 0, 0, 0.22) 88%,
+			rgba(0, 0, 0, 0.05) 95%,
+			transparent 100%
+		),
+		linear-gradient(
+			to right,
+			transparent 0%,
+			rgba(0, 0, 0, 0.35) 5%,
+			rgba(0, 0, 0, 0.85) 11%,
+			#000 17%,
+			#000 83%,
+			rgba(0, 0, 0, 0.85) 89%,
+			rgba(0, 0, 0, 0.35) 95%,
+			transparent 100%
+		);
 	-webkit-mask-composite: source-in;
-	mask-image: radial-gradient(ellipse 64% 76% at 50% 56%, #000 50%, transparent 94%),
-		linear-gradient(to top, #000 82%, transparent 100%);
+	mask-image:
+		linear-gradient(
+			to bottom,
+			#000 0%,
+			#000 55%,
+			rgba(0, 0, 0, 0.88) 66%,
+			rgba(0, 0, 0, 0.55) 77%,
+			rgba(0, 0, 0, 0.22) 88%,
+			rgba(0, 0, 0, 0.05) 95%,
+			transparent 100%
+		),
+		linear-gradient(
+			to right,
+			transparent 0%,
+			rgba(0, 0, 0, 0.35) 5%,
+			rgba(0, 0, 0, 0.85) 11%,
+			#000 17%,
+			#000 83%,
+			rgba(0, 0, 0, 0.85) 89%,
+			rgba(0, 0, 0, 0.35) 95%,
+			transparent 100%
+		);
 	mask-composite: intersect;
 }
 
@@ -143,7 +183,44 @@
 	position: sticky;
 	top: 0;
 	box-shadow: 0 -28px 70px rgba(0, 0, 0, 0.88);
-	will-change: transform;
+}
+
+/* Smooth horizontal edge fade mask for single-row infinite marquee */
+.marquee-edge-fade {
+	-webkit-mask-image: linear-gradient(
+		to right,
+		transparent 0%,
+		#000 6%,
+		#000 94%,
+		transparent 100%
+	);
+	mask-image: linear-gradient(
+		to right,
+		transparent 0%,
+		#000 6%,
+		#000 94%,
+		transparent 100%
+	);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	@keyframes readings-marquee-scroll {
+		from {
+			transform: translateX(0);
+		}
+		to {
+			transform: translateX(-50%);
+		}
+	}
+
+	.animate-readings-marquee {
+		animation: readings-marquee-scroll 36s linear infinite;
+	}
+
+	.readings-marquee-group:hover .animate-readings-marquee,
+	.readings-marquee-group:focus-within .animate-readings-marquee {
+		animation-play-state: paused;
+	}
 }
 
 /* Progressive enhancement for scroll-driven entry reveal per modern-web-guidance */

@@ -2,13 +2,21 @@
 	import { onMount } from 'svelte';
 	import { Menu, X } from 'lucide-svelte';
 
-	type SectionId = 'hero' | 'about' | 'experience' | 'work' | 'capabilities' | 'contact';
+	type SectionId =
+		| 'hero'
+		| 'about'
+		| 'experience'
+		| 'work'
+		| 'capabilities'
+		| 'certifications'
+		| 'contact';
 
 	const navItems: { id: SectionId; label: string; href: string }[] = [
 		{ id: 'about', label: 'About', href: '#about' },
 		{ id: 'experience', label: 'Experience', href: '#experience' },
 		{ id: 'work', label: 'Work', href: '#work' },
 		{ id: 'capabilities', label: 'Capabilities', href: '#capabilities' },
+		{ id: 'certifications', label: 'Certifications', href: '#certifications' },
 		{ id: 'contact', label: 'Contact', href: '#contact' }
 	];
 
@@ -30,7 +38,15 @@
 		if (!target) return;
 
 		// Because slides use position: sticky, calculate true document offset by summing preceding slides' heights
-		const allSlides: SectionId[] = ['hero', 'about', 'experience', 'work', 'capabilities', 'contact'];
+		const allSlides: SectionId[] = [
+			'hero',
+			'about',
+			'experience',
+			'work',
+			'capabilities',
+			'certifications',
+			'contact'
+		];
 		const targetIndex = allSlides.indexOf(id);
 		let topOffset = 0;
 
@@ -46,7 +62,15 @@
 	}
 
 	onMount(() => {
-		const orderedIds: SectionId[] = ['hero', 'about', 'experience', 'work', 'capabilities', 'contact'];
+		const orderedIds: SectionId[] = [
+			'hero',
+			'about',
+			'experience',
+			'work',
+			'capabilities',
+			'certifications',
+			'contact'
+		];
 
 		const updateActiveSection = () => {
 			const triggerLine = window.innerHeight * 0.38;

@@ -35,7 +35,7 @@
 						<span class="text-emerald-400">/</span>EXPERIENCE
 					</h2>
 					<p class="mt-2 max-w-xl text-sm sm:text-base text-zinc-400">
-						Perjalanan profesional dalam merancang sistem, menulis kode, dan berkolaborasi di lingkungan industri.
+						Perjalanan profesional dalam mengembangkan aplikasi dan berkolaborasi di lingkungan industri.
 					</p>
 				</div>
 

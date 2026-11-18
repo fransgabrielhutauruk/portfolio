@@ -5,6 +5,7 @@
 	import AboutSlide from '$lib/components/AboutSlide.svelte';
 	import WorkSlide from '$lib/components/WorkSlide.svelte';
 	import CapabilitiesSlide from '$lib/components/CapabilitiesSlide.svelte';
+	import CertificationsSlide from '$lib/components/CertificationsSlide.svelte';
 	import ExperienceSlide from '$lib/components/ExperienceSlide.svelte';
 	import ContactSlide from '$lib/components/ContactSlide.svelte';
 
@@ -56,6 +57,7 @@
 		<ExperienceSlide />
 		<WorkSlide />
 		<CapabilitiesSlide />
+		<CertificationsSlide />
 	</main>
 
 	<ContactSlide />

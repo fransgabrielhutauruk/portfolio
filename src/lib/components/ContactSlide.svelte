@@ -53,7 +53,7 @@
 
 <footer
   id="contact"
-  class="scroll-slide-curtain z-60 flex min-h-screen flex-col justify-between overflow-hidden rounded-t-[2.25rem] sm:rounded-t-[3rem] border-t border-emerald-500/35 bg-[#0d1016] pt-16 pb-6 sm:pt-24"
+  class="scroll-slide-curtain z-[70] flex min-h-screen flex-col justify-between overflow-hidden rounded-t-[2.25rem] sm:rounded-t-[3rem] border-t border-emerald-500/35 bg-[#0d1016] pt-16 pb-6 sm:pt-24"
 >
   <!-- Ambient Emerald Glow -->
   <div
@@ -72,13 +72,13 @@
     <h2
       class="font-display text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-zinc-100"
     >
-      TERTARIK <span class="text-emerald-400">BERKOLABORASI?</span>
+      MARI <span class="text-emerald-400">TERHUBUNG</span>
     </h2>
 
     <p class="mt-5 max-w-2xl text-sm sm:text-lg leading-relaxed text-zinc-400">
       Saya terbuka untuk kesempatan kerja <strong class="text-zinc-200"
-        >Full-Time</strong
-      > ( Full-Stack / Backend / Frontend Developer).
+        >Full-Time.</strong
+      >
     </p>
 
     <!-- Primary Direct Action Buttons for Indonesian Recruiters & Clients -->

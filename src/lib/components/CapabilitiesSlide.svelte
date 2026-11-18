@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ArrowUpRight, Code2, X } from 'lucide-svelte';
+	import { Plus, Code2, X } from 'lucide-svelte';
 	import { portfolioData } from '$lib/data/portfolio';
 
 	const { capabilities } = portfolioData;
@@ -38,9 +38,6 @@
 				<h2 class="font-display text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-100">
 					<span class="text-emerald-400">/</span>KEAHLIAN &amp; TECH STACK
 				</h2>
-				<p class="font-mono-code text-xs sm:text-sm text-zinc-400">
-					Klik atau arahkan kursor pada baris keahlian
-				</p>
 			</div>
 		</div>
 
@@ -83,7 +80,7 @@
 								{#if isOpen}
 									<X class="h-4 w-4 sm:h-5 sm:w-5" />
 								{:else}
-									<ArrowUpRight class="h-4 w-4 sm:h-5 sm:w-5" />
+									<Plus class="h-4 w-4 sm:h-5 sm:w-5" />
 								{/if}
 							</span>
 						</div>

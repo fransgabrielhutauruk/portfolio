@@ -51,7 +51,7 @@
 				aria-hidden="true"
 				class="watermark-title text-[clamp(3.6rem,11.5vw,9.8rem)] uppercase tracking-tighter"
 			>
-				PORTFOLIO
+				PROJECTS
 			</span>
 			<h2
 				class="font-display relative -mt-8 sm:-mt-14 text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-100"
@@ -59,8 +59,7 @@
 				<span class="text-emerald-400">/</span>SELECTED WORK
 			</h2>
 			<p class="mt-3 max-w-xl text-sm sm:text-base text-zinc-400">
-				Proyek aplikasi web Full-Stack berskala produksi yang dirancang dan dikembangkan secara
-				end-to-end sebagai Solo Developer.
+				Kumpulan aplikasi web Full-Stack siap produksi yang dirancang dan dikembangkan secara end-to-end.
 			</p>
 		</div>
 
@@ -118,43 +117,69 @@
 			<!-- Carousel Track Viewport -->
 			<div class="min-w-0 flex-1 overflow-hidden py-2 -my-2">
 				<div
-					class="flex transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] {visibleCount === 2
+					class="flex w-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] {visibleCount === 2
 						? 'gap-8'
 						: 'gap-6'}"
-					style="transform: translate3d(calc(-{currentIndex} * ({visibleCount === 2
-						? '50% + 16px'
-						: '100% + 24px'})), 0, 0);"
+					style="transform: {currentIndex === 0
+						? 'none'
+						: `translateX(calc(-${currentIndex} * (${visibleCount === 2 ? '50% + 16px' : '100% + 24px'})))`};"
 				>
 					{#each projects as project (project.id)}
 						<article
-							class="group relative flex shrink-0 flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-[#0b0e13] p-5 sm:p-7 transition duration-300 hover:-translate-y-1 hover:border-emerald-500/45 hover:shadow-[0_20px_50px_rgba(16,185,129,0.12)] {visibleCount ===
+							class="group relative flex shrink-0 flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-[#0b0e13] p-5 sm:p-7 transition-colors duration-300 hover:border-emerald-500/45 hover:shadow-[inset_0_0_36px_rgba(16,185,129,0.08)] {visibleCount ===
 							2
 								? 'w-[calc(50%-16px)]'
 								: 'w-full'}"
 						>
 							<div>
-								<!-- Top Image Mockup Container with Category Pill -->
+								<!-- Top Minimalist Browser Window Frame around Screenshot -->
 								<a
 									href={project.liveUrl}
 									target="_blank"
 									rel="noopener noreferrer"
-									class="relative block overflow-hidden rounded-2xl border border-white/10 bg-zinc-950 aspect-[16/9]"
+									class="relative block overflow-hidden rounded-2xl border border-white/10 bg-[#131720] p-2 sm:p-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] transition duration-300 group-hover:border-emerald-500/35"
 								>
-									<span
-										class="font-mono-code absolute top-3.5 right-3.5 z-10 flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-zinc-950/80 text-zinc-200 backdrop-blur-md transition group-hover:border-emerald-400 group-hover:bg-emerald-500 group-hover:text-zinc-950"
-									>
-										<ArrowUpRight class="h-4 w-4" />
-									</span>
+									<!-- Minimalist Browser Top Bar (Window Dots + Domain Pill + Open Icon) -->
+									<div class="mb-2 flex items-center justify-between gap-2 px-1.5 py-0.5">
+										<div class="flex items-center gap-1.5" aria-hidden="true">
+											<span class="h-2.5 w-2.5 rounded-full bg-white/15 transition-colors group-hover:bg-rose-400/70"></span>
+											<span class="h-2.5 w-2.5 rounded-full bg-white/15 transition-colors group-hover:bg-amber-400/70"></span>
+											<span class="h-2.5 w-2.5 rounded-full bg-white/15 transition-colors group-hover:bg-emerald-400/80"></span>
+										</div>
 
-									<!-- Below-the-fold project image -> loading="lazy" ALONE per modern-web-guidance -->
-									<img
-										src={project.image}
-										alt={project.title}
-										loading="lazy"
-										width="1920"
-										height="1080"
-										class="h-full w-full object-cover object-top transition duration-500 group-hover:scale-[1.02]"
-									/>
+										<div
+											class="font-mono-code flex items-center gap-1.5 rounded-md border border-white/8 bg-[#0b0e13]/90 px-3 py-0.5 text-[11px] text-zinc-400 transition-colors group-hover:border-emerald-500/25 group-hover:text-emerald-300"
+										>
+											<span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+											<span class="truncate">{project.liveLabel}</span>
+										</div>
+
+										<span
+											class="flex h-6 w-6 items-center justify-center rounded-full border border-white/10 bg-[#0b0e13]/80 text-zinc-400 transition group-hover:border-emerald-400 group-hover:bg-emerald-500 group-hover:text-zinc-950"
+										>
+											<ArrowUpRight class="h-3.5 w-3.5" />
+										</span>
+									</div>
+
+									<!-- Screenshot Viewport with Subtle Inner Border -->
+									<div class="relative overflow-hidden rounded-xl border border-white/10 bg-zinc-950 aspect-[16/9]">
+										<!-- Multi-step pre-filtered responsive srcset prevents 6.5x browser downscale blur -->
+										<img
+											src={project.image}
+											srcset="{project.image.replace('.webp', '-640w.webp')} 640w, {project.image.replace('.webp', '-1280w.webp')} 1280w, {project.image} 2560w"
+											sizes="(min-width: 1024px) 540px, 92vw"
+											alt={project.title}
+											loading="lazy"
+											decoding="async"
+											width="1280"
+											height="720"
+											class="block h-full w-full object-cover object-top"
+										/>
+										<!-- Subtle Inner Vignette Overlay so Bright Screenshots Blend Naturally -->
+										<div
+											class="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-black/20"
+										></div>
+									</div>
 								</a>
 
 								<!-- Project Title & Summary -->
@@ -199,15 +224,7 @@
 									{/each}
 								</div>
 
-								<a
-									href={project.liveUrl}
-									target="_blank"
-									rel="noopener noreferrer"
-									class="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-emerald-500 px-4 py-2 text-xs font-semibold text-zinc-950 transition hover:bg-emerald-400 hover:shadow-[0_0_20px_rgba(16,185,129,0.4)]"
-								>
-									<span>Live ({project.liveLabel})</span>
-									<ExternalLink class="h-3.5 w-3.5" />
-								</a>
+
 							</div>
 						</article>
 					{/each}
